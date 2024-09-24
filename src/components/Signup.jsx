@@ -4,7 +4,7 @@ import authService from '../appwrite_services/auth'
 import { login } from '../Store/authSlice'
 import { Input,Button,Logo } from './index'
 import { useDispatch } from 'react-redux'
-import { useForm } from 'react-hook-form'
+import { set, useForm } from 'react-hook-form'
 
 function Signup() {
 
@@ -23,7 +23,7 @@ function Signup() {
                 navigate("/")
             }
         } catch (error) {
-            setError(error.message)
+            setError(error.message);
         }
     }
 
@@ -73,7 +73,8 @@ function Signup() {
                 type="password"
                 placeholder="Enter your password"
                 {...register("password", {
-                    required: true, minLength: 8})}
+                    required: true,
+                     min:8})}
                 />
                 <Button type="submit" className='w-full'>
                     Create Account

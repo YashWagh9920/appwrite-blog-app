@@ -1,6 +1,6 @@
 import React from 'react'
 import { Logo,LogoutBtn,Container } from "../index";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Header() {
@@ -48,10 +48,13 @@ function Header() {
             navItems.map((item)=>
                item.active ? 
                <li key={item.name}>
-                <button
-                className='inline-block px-6 py-2 duration-200 rounded-full hover:bg-blue-100'
-             onClick={ ()=> navigate(item.slug)}>{item.name}
-             </button>
+                <NavLink
+                to={item.slug}
+                className={({isActive}) => 
+                  isActive ? 'text-white inline-block px-6 py-2 duration-200 rounded-full bg-gray-800 hover:bg-gray-700' 
+                           : 'text-black inline-block px-6 py-2 duration-200 rounded-full hover:bg-blue-600'}                               
+            >{item.name}
+             </NavLink>
              </li> : null)
             }
             {authstatus && <li><LogoutBtn/></li>}
