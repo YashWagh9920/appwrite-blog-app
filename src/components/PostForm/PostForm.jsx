@@ -20,6 +20,7 @@ function PostForm({ post }) {
 
   const submit = async (data) => {
     if (post) {
+      console.log(data);
       const file = data.image[0] ? await storageService.uploadFile(data.image[0]) : null
       if (file) {
          storageService.deleteFile(post.featuredImage)
@@ -30,6 +31,7 @@ function PostForm({ post }) {
       }
     }
     else {
+      console.log(data);
       const file = data.image[0] ? await storageService.uploadFile(data.image[0]) : null
       const fileId = file.$id
       data.featuredImage = fileId
@@ -69,6 +71,7 @@ useEffect(()=>{
             {...register("title", { required: true })}
         />
         <Input
+           readOnly={true}
             label="Slug :"
             placeholder="Slug"
             className="mb-4"
@@ -97,7 +100,7 @@ useEffect(()=>{
             </div>
         )}
         <Select
-            options={["active", "inactive"]}
+            options={["public", "private"]}
             label="Status"
             className="mb-4"
             {...register("status", { required: true })}

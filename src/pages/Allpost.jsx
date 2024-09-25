@@ -4,8 +4,7 @@ import storageServices from "../appwrite_services/storageServices";
 
 function Allpost() {
 
-    const [post,setPost] = useState([])
-
+    const [post,setPost] = useState([]);
     useEffect(()=>{
         storageServices.getAllPosts([])
         .then((posts)=> posts ? setPost(posts.documents) : setPost([]))
@@ -18,7 +17,7 @@ function Allpost() {
         {
             post && post.map((post)=>(
               <div key={post.$id} className='p-2 w-1/4'>
-                <PostCard $id={post.$id} title={post.title} feauturedImage={post.featuredImage}/>
+               <PostCard $id={post.$id} title={post.title} feauturedImage={post.featuredImage}/>
               </div>
             ))
         }
