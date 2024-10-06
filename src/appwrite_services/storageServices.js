@@ -84,7 +84,7 @@ class StorageService {
      }
     }
 
-    async getAllPosts(queries = [Query.equal("status","active")]){
+    async getAllPosts(queries = [Query.equal("status","public")]){
        try {
         return this.databases.listDocuments(
             config.databaseid,

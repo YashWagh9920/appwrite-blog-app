@@ -1,14 +1,32 @@
 import React,{useState,useEffect} from 'react'
 import { Container ,PostCard} from '../components/index'
 import storageService from '../appwrite_services/storageServices'
+import { useDispatch,useSelector } from 'react-redux';
+import { addpost } from '../Store/postSlice';
+import { Query } from 'appwrite';
 
 function Home() {
-    const [posts,setPosts] = useState([])
+    const [posts,setPosts] = useState([]);
+    const dispatch = useDispatch();
+    const cachepost = useSelector((state)=> state.post.allPosts);
     
     useEffect(()=>{
-        storageService.getAllPosts([])
-        .then((posts)=> posts ? setPosts(posts.documents) : setPosts([]))
-    },[])
+        if(cachepost && cachepost.length > 0){
+            setPosts(cachepost);
+        }
+        else{
+            storageService.getAllPosts([Query.equal("status","public")])
+            .then((posts)=> {
+            if(posts){
+                setPosts(posts.documents);
+                dispatch(addpost(posts.documents));
+            }
+            else{
+             setPosts([])
+            }
+        })
+        }
+    },[cachepost])
 
   if(posts.length === 0){
     return (

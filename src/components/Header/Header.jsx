@@ -1,11 +1,10 @@
 import React from 'react'
 import { Logo,LogoutBtn,Container } from "../index";
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Header() {
   const authstatus = useSelector((state) => state.auth.status)
-   const navigate = useNavigate()
 
   const navItems = [
     {
@@ -24,8 +23,8 @@ function Header() {
       active: !authstatus
     },
     {
-      name: "All posts",
-      slug: "/all-posts",
+      name: "Your Posts",
+      slug: "/your-posts",
       active:authstatus
     },
     {
