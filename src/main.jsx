@@ -5,7 +5,7 @@ import './index.css'
 import { Provider } from 'react-redux'
 import store from './Store/store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Post,Addpost,Editpost,Yourpost,Login,Signup,Home} from "./pages/pages.js";
+import { Post,Addpost,Editpost,YourPost,Login,Signup,Home} from "./pages/pages.js";
 import { Protected } from "./components/index.js";
 
 const router = createBrowserRouter([
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             element: (
                 <Protected authentication>
                     {" "}
-                    <Yourpost />
+                    <YourPost />
                 </Protected>
             ),
         },

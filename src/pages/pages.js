@@ -4,6 +4,6 @@ import Login from './Login';
 import Signup from './Signup';  
 import Editpost from './Editpost';
 import Post from './Post';
-import Yourpost from './YourPost';
+import YourPost from './YourPost';
 
-export {Addpost, Home, Login, Signup, Editpost, Post,Yourpost}
+export {Addpost, Home, Login, Signup, Editpost, Post,YourPost}
