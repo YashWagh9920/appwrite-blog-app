@@ -6,7 +6,7 @@ import { Query } from 'appwrite';
 import { addUsersPost } from '../Store/postSlice';
 import { Link } from 'react-router-dom';
 
-function YourPost() {
+function Allpost() {
   const [post, setPost] = useState([]);
   const dispatch = useDispatch();
   const posts = useSelector(state => state.post.usersPosts) || [];
@@ -65,4 +65,4 @@ function YourPost() {
   )
 }
 
-export default YourPost
+export default Allpost
