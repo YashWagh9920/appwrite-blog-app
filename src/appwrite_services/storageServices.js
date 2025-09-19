@@ -126,17 +126,14 @@ class StorageService {
         }
     }
 
-     filePreview(fileId){
-        try {
-           return this.storage.getFilePreview(
-            config.bucketid,
-            fileId
-           )
-        } catch (error) {
-            console.log(error);
-            
+    getFileView(fileId) {
+    try {
+    return this.storage.getFileView(config.bucketid, fileId);
+    } catch (error) {
+    console.log(error);
         }
     }
+
 
 }
 

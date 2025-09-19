@@ -93,7 +93,7 @@ useEffect(()=>{
         {post && (
             <div className="w-full mb-4">
                 <img
-                    src={storageService.filePreview(post.featuredImage)}
+                    src={storageService.getFileView(post.featuredImage)}
                     alt={post.title}
                     className="rounded-lg"
                 />
